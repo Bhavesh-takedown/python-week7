@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gitflow-simulation"
+version = "0.1.0"
+description = "A small release-notes tool for practicing the Gitflow branching model."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Gitflow Simulation contributors"}]
+dependencies = []
+
+[project.scripts]
+gitflow-notes = "gitflow_simulation.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

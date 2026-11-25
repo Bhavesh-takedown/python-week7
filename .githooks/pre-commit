@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+set -eu
+
+branch=$(git branch --show-current)
+case "$branch" in
+  main|develop)
+    echo "Direct commits to '$branch' are blocked. Create a feature, release, or hotfix branch and open a PR." >&2
+    exit 1
+    ;;
+esac
+
+echo "Running flake8..."
+python -m flake8 src tests
+echo "Running pytest..."
+python -m pytest -q
